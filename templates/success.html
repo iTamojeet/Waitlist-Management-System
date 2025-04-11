@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Thank You for Joining Our Waitlist!{% endblock %}
+
+{% block content %}
+<section class="section bg-dark text-light" style="min-height: 80vh; display: flex; align-items: center;">
+    <div class="container text-center">
+        <div class="animate-on-scroll">
+            <i class="fas fa-check-circle text-success success-icon"></i>
+            <h1 class="display-4 fw-bold mb-4">Thank You for Joining Our Waitlist!</h1>
+            <p class="lead mb-4">We're thrilled to have you on board. We'll notify you as soon as we launch.</p>
+            
+            <!-- Waitlist Counter -->
+            <div class="bg-dark rounded-pill px-4 py-2 d-inline-flex align-items-center mb-5">
+                <i class="fas fa-users text-warning me-2"></i>
+                <span class="fw-bold">You've joined <span class="text-warning">{{ subscriber_count|default(15) }}+</span> people excited about our launch!</span>
+            </div>
+            
+            <div class="card bg-dark border-light p-4 mx-auto" style="max-width: 550px;">
+                <div class="card-body">
+                    <h4 class="mb-4">What's Next?</h4>
+                    <ul class="list-unstyled text-start mb-4">
+                        <li class="mb-3">
+                            <i class="fas fa-envelope text-primary me-2"></i>
+                            Check your email for a confirmation message
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-bell text-primary me-2"></i>
+                            We'll send updates about our launch progress
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-tag text-primary me-2"></i>
+                            You'll receive special early-access pricing
+                        </li>
+                    </ul>
+                    
+                    {% if referral_link %}
+                    <div class="mt-4 mb-4">
+                        <h5 class="mb-3">Share your unique referral link</h5>
+                        <p class="small mb-2">Invite friends to join our waitlist and help us grow!</p>
+                        
+                        <div class="input-group mb-3">
+                            <input type="text" id="referral-link" class="form-control" value="{{ referral_link }}" readonly>
+                            <button class="btn btn-primary" type="button" onclick="copyReferralLink()">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div id="copy-confirmation" class="text-success d-none small">
+                            <i class="fas fa-check me-1"></i> Copied to clipboard!
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="javascript:void(0)" onclick="shareOnSocial('twitter')" class="btn btn-outline-primary">
+                            <i class="fab fa-twitter me-2"></i>Share on Twitter
+                        </a>
+                        <a href="javascript:void(0)" onclick="shareOnSocial('facebook')" class="btn btn-outline-primary">
+                            <i class="fab fa-facebook me-2"></i>Share on Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="/" class="btn btn-light mt-5">
+                <i class="fas fa-arrow-left me-2"></i>Back to Homepage
+            </a>
+        </div>
+    </div>
+</section>
+
+{% block extra_js %}
+<script>
+    function copyReferralLink() {
+        const referralLink = document.getElementById('referral-link');
+        referralLink.select();
+        document.execCommand('copy');
+        
+        // Show confirmation
+        const confirmation = document.getElementById('copy-confirmation');
+        confirmation.classList.remove('d-none');
+        
+        // Hide after 3 seconds
+        setTimeout(() => {
+            confirmation.classList.add('d-none');
+        }, 3000);
+    }
+</script>
+{% endblock %}
+{% endblock %}

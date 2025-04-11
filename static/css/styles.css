@@ -1,0 +1,121 @@
+/* Custom styles for Waitlist Landing Page */
+
+/* General styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+/* Hero section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Animation for elements */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Features section */
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+/* Waitlist form */
+.form-container {
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Success page styling */
+.success-icon {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+}
+
+/* Confetti animation for success page */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: confetti-fall 6s linear infinite;
+    z-index: -1;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Responsive fixes */
+@media (max-width: 991px) {
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .hero-section {
+        min-height: auto;
+        padding: 6rem 0 3rem;
+    }
+}
+
+/* Admin dashboard */
+.pagination .page-link {
+    background-color: transparent;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+/* Tooltip styles */
+.tooltip {
+    max-width: 200px;
+}
+
+/* Background patterns and accents */
+.bg-gradient {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, #4e73df 100%);
+    border-radius: 20px;
+    padding: 2rem;
+}
